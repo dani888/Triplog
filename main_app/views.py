@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Trip
 
 # Create your views here.
@@ -14,17 +16,19 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def upcomingtrips_index(request):
-  trips = Trip.objects.all()
+  trips = Trip.objects.filter(user=request.user)
   return render(request, 'trips/index.html', { 'trips': trips })
 
+@login_required
 def trips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
   return render(request, 'trips/detail.html', { 'trip': trip })
 
-class TripCreate(CreateView):
+class TripCreate(LoginRequiredMixin, CreateView):
   model = Trip
-  fields = '__all__'
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
   def form_valid(self, form):
     # Assign the logged in user (self.request.user)
     form.instance.user = self.request.user  # form.instance is the cat
@@ -50,11 +54,11 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-class TripUpdate(UpdateView):
+class TripUpdate(LoginRequiredMixin, UpdateView):
   model = Trip
-  fields = '__all__'
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
 
-class TripDelete(DeleteView):
+class TripDelete(LoginRequiredMixin, DeleteView):
   model = Trip
   success_url = '/upcomingtrips/'
 
