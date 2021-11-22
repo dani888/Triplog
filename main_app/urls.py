@@ -9,4 +9,5 @@ urlpatterns = [
     path('upcomingtrips/create/', views.TripCreate.as_view(), name='trips_create'),
     path('upcomingtrips/<int:pk>/update/', views.TripUpdate.as_view(), name='trips_update'),
     path('upcomingtrips/<int:pk>/delete/', views.TripDelete.as_view(), name='trips_delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
