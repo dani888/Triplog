@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Trip
 
 # Create your views here.
@@ -19,6 +20,10 @@ def trips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
   return render(request, 'trips/detail.html', { 'trip': trip })
 
+class TripCreate(CreateView):
+  model = Trip
+  fields = '__all__'
+  success_url = '/upcomingtrips/'
 
 # class Trip:  # Note that parens are optional if not inheriting from another class
 #   def __init__(self, First_name, Last_name, vaccinated, location, date, Past_trip, images, review):
