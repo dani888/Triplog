@@ -4,15 +4,12 @@
 
 {% for trip in trips %}
 <div class="card">
+  <a href="/upcomingtrips/{{ trip.id }}">
   <div class="card-content">
     <span class="card-title">{{ trip.location }}</span>
-    <p>First_Name: {{ trip.First_name }}</p>
-    <p>Last_Name: {{ trip.Last_name }}</p>
-    {% if trip.vaccinated == True %}
-    <p>Vaccinated Status: Yes</p>
-    {% else %}
-    <p>Vaccinated Status: No</p>
-    {% endif %}
+    <p>Trip Organizer: {{ trip.trip_organizer  }}</p>
+    <p>Attendees: {{ trip.attending }}</p>
   </div>
+</a>
 </div>
 {% endfor %} {% endblock %}

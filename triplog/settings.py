@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'triplog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'triplog',
+        'NAME': 'triplog'
     }
 }
 
