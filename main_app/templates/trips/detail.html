@@ -4,8 +4,12 @@
 <div class="card">
   <div class="card-content">
     <span class="card-title">{{ trip.location }}</span>
-    <p>Trip Organizer: {{ trip.trip_organizer  }}</p>
+    <p>Trip Organizer: {{ trip.trip_organizer }}</p>
     <p>Attendees: {{ trip.attending }}</p>
+  </div>
+  <div class="card-action">
+    <a href="{% url 'trips_update' trip.id %}">Edit</a>
+    <a href="{% url 'trips_delete' trip.id %}">Delete</a>
   </div>
 </div>
 {% endblock %}
