@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Trip
 
 # Create your views here.
@@ -23,6 +23,14 @@ def trips_detail(request, trip_id):
 class TripCreate(CreateView):
   model = Trip
   fields = '__all__'
+  success_url = '/upcomingtrips/'
+
+class TripUpdate(UpdateView):
+  model = Trip
+  fields = '__all__'
+
+class TripDelete(DeleteView):
+  model = Trip
   success_url = '/upcomingtrips/'
 
 # class Trip:  # Note that parens are optional if not inheriting from another class
