@@ -11,4 +11,4 @@ class Trip(models.Model):
     notes = models.TextField(max_length=250)
 
     def __str__(self):
-        return self.Location
+        return self.location
