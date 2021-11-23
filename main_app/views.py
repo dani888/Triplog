@@ -36,6 +36,11 @@ def trips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
   return render(request, 'trips/detail.html', { 'trip': trip })
 
+@login_required
+def pasttrips_detail(request, trip_id):
+  trip = Trip.objects.get(id=trip_id)
+  return render(request, 'trips/pastdetail.html', { 'trip': trip })
+
 class TripCreate(LoginRequiredMixin, CreateView):
   model = Trip
   fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']

@@ -7,6 +7,7 @@ urlpatterns = [
     path('upcomingtrips/', views.upcomingtrips_index, name='index'),
     path('pasttrips/', views.pasttrips_index, name='indexpast'),
     path('upcomingtrips/<int:trip_id>/', views.trips_detail, name='detail'),
+    path('pasttrips/<int:trip_id>/', views.pasttrips_detail, name='pastdetail'),
     path('upcomingtrips/create/', views.TripCreate.as_view(), name='trips_create'),
     path('upcomingtrips/<int:pk>/update/', views.TripUpdate.as_view(), name='trips_update'),
     path('upcomingtrips/<int:pk>/delete/', views.TripDelete.as_view(), name='trips_delete'),
