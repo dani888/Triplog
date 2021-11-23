@@ -1,3 +1,23 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Home Page Triplog.io</h1>
+
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+
+<!-- <div class="home"> -->
+    <h1>Home Page Triplog.io</h1>
+    <p>Organize Travel in Style</p>
+    <div class="carousel">
+        <a class="carousel-item" href="#one!"><img src="https://images.unsplash.com/photo-1558642084-fd07fae5282e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80">Spain</a>
+        <a class="carousel-item" href="#two!"><img src="https://images.unsplash.com/photo-1581875403743-a3bf92862c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Peru</a>
+        <a class="carousel-item" href="#three!"><img src="https://images.unsplash.com/photo-1605523746900-8aa30db1befd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80">Kyoto</a>
+        <a class="carousel-item" href="#four!"><img src="https://images.unsplash.com/photo-1624832040555-d9f92f7be672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Ghana</a>
+        <a class="carousel-item" href="#five!"><img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Santorini</a>
+    </div>    
+<!-- </div> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems);
+  });
+</script>
+
 {% endblock %}
