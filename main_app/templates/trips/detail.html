@@ -32,6 +32,10 @@
     </form>
   </div>
   <div class="col s6">
+    <form action="{% url 'add_comment' trip.id %}" method="post">
+      {% csrf_token %} {{ comment_form.as_p }}
+      <input type="submit" class="btn green" value="Add Comment" />
+    </form>
     <table class="striped">
       <thead>
         <tr>
@@ -50,4 +54,15 @@
     </table>
   </div>
 </div>
+
+<script>
+  var dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
+
 {% endblock %}
