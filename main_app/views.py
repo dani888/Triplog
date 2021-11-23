@@ -5,6 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Trip
+from datetime import date
+
 
 # Create your views here.
 from django.http import HttpResponse
@@ -18,8 +20,16 @@ def about(request):
 
 @login_required
 def upcomingtrips_index(request):
-  trips = Trip.objects.filter(user=request.user)
+  today = date.today()
+  trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
   return render(request, 'trips/index.html', { 'trips': trips })
+
+
+@login_required
+def pasttrips_index(request):
+  today = date.today()
+  trips = Trip.objects.filter(user=request.user).filter(date__lte=today)
+  return render(request, 'trips/indexpast.html', { 'trips': trips })
 
 @login_required
 def trips_detail(request, trip_id):
