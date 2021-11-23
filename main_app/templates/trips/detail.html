@@ -6,6 +6,11 @@
     <span class="card-title">{{ trip.location }}</span>
     <p>Trip Organizer: {{ trip.trip_organizer }}</p>
     <p>Attendees: {{ trip.attending }}</p>
+    <p>Location: {{ trip.location }}</p>
+    <p>Budget: {{ trip.budget }}</p>
+    <p>Date: {{ trip.date }}</p>
+    <p>Plan: {{ trip.plan }}</p>
+    <p>Notes: {{ trip.notes }}</p>
   </div>
   <div class="card-action">
     <a href="{% url 'trips_update' trip.id %}">Edit</a>
