@@ -12,6 +12,6 @@ urlpatterns = [
     path('upcomingtrips/<int:pk>/update/', views.TripUpdate.as_view(), name='trips_update'),
     path('upcomingtrips/<int:pk>/delete/', views.TripDelete.as_view(), name='trips_delete'),
     path('accounts/signup/', views.signup, name='signup'),
-
     path('upcomingtrips/<int:trip_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('upcomingtrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
 ]

@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Trip, Photo
 from datetime import date
+from .forms import CommentForm
 import uuid
 import boto3
 
@@ -39,12 +40,13 @@ def pasttrips_index(request):
 @login_required
 def trips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
-  return render(request, 'trips/detail.html', { 'trip': trip })
+  comment_form = CommentForm()
+  return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form})
 
 @login_required
 def pasttrips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
-  return render(request, 'trips/pastdetail.html', { 'trip': trip })
+  return render(request, 'trips/pastdetail.html', { 'trip': trip})
 
 def add_photo(request, trip_id):
     # photo-file will be the "name" attribute on the <input type="file">
@@ -89,10 +91,17 @@ def signup(request):
       return redirect('index')
     else:
       error_message = 'Invalid sign up - try again'
-  # A bad POST or a GET request, so render signup.html with an empty form
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
+def add_comment(request, trip_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.trip_id = trip_id
+    new_comment.save()
+  return redirect('detail', trip_id=trip_id)
 
 class TripUpdate(LoginRequiredMixin, UpdateView):
   model = Trip
@@ -101,20 +110,3 @@ class TripUpdate(LoginRequiredMixin, UpdateView):
 class TripDelete(LoginRequiredMixin, DeleteView):
   model = Trip
   success_url = '/upcomingtrips/'
-
-# class Trip:  # Note that parens are optional if not inheriting from another class
-#   def __init__(self, First_name, Last_name, vaccinated, location, date, Past_trip, images, review):
-#     self.First_name = First_name
-#     self.Last_name = Last_name
-#     self.vaccinated = vaccinated
-#     self.location = location
-#     self.date = date
-#     self.Past_trip = Past_trip
-#     self.images = images
-#     self.review = review
-
-# trips = [
-#   Trip('Dan', 'Werm', True, 'Germany', 'Nov-12-2022', False, None, None),
-# #   Trip('Sachi', 'tortoise shell', 'diluted tortoise shell', 0),
-# #   Trip('Raven', 'black tripod', '3 legged cat', 4)
-# ]
