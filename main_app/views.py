@@ -38,6 +38,11 @@ def pasttrips_index(request):
   return render(request, 'trips/indexpast.html', { 'trips': trips })
 
 @login_required
+def publictrip_index(request):
+  trips = Trip.objects.filter(public='Y')
+  return render(request, 'trips/indexpublic.html', { 'trips': trips })
+
+@login_required
 def trips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
   comment_form = CommentForm()
@@ -48,6 +53,13 @@ def pasttrips_detail(request, trip_id):
   trip = Trip.objects.get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
+
+@login_required
+def publictrips_detail(request, trip_id):
+  trip = Trip.objects.get(id=trip_id)
+  comment_form = CommentForm()
+  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form})
+
 
 @login_required
 def add_photo(request, trip_id):
@@ -72,7 +84,7 @@ def add_photo(request, trip_id):
 
 class TripCreate(LoginRequiredMixin, CreateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
   def form_valid(self, form):
     # Assign the logged in user (self.request.user)
     form.instance.user = self.request.user  # form.instance is the cat
@@ -106,9 +118,17 @@ def add_comment(request, trip_id):
     new_comment.save()
   return redirect('detail', trip_id=trip_id)
 
+def add_commentpublic(request, trip_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.trip_id = trip_id
+    new_comment.save()
+  return redirect('public_detail', trip_id=trip_id)
+
 class TripUpdate(LoginRequiredMixin, UpdateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
 
 class TripDelete(LoginRequiredMixin, DeleteView):
   model = Trip
