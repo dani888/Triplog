@@ -1,15 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Trip List</h1>
+<body class="body">
 
-{% for trip in trips %}
-<div class="card">
-  <a href="/upcomingtrips/{{ trip.id }}">
-  <div class="card-content">
-    <span class="card-title">{{ trip.location }}</span>
-    <p>Trip Organizer: {{ trip.trip_organizer  }}</p>
-    <p>Attendees: {{ trip.attending }}</p>
+  <div class="container">
+    <h1>Upcoming Trips</h1>
+
+
+    {% for trip in trips %}
+    <div class="card">
+      <a href="/upcomingtrips/{{ trip.id }}">
+        <div class="card-content">
+          <span class="card-title">{{ trip.location }}</span>
+          <p>Trip Organizer: {{ trip.trip_organizer }}</p>
+          <p>Attendees: {{ trip.attending }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
   </div>
-</a>
-</div>
-{% endfor %} {% endblock %}
+
+</body>
+{% endblock %}

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Triplog.io</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -19,14 +22,14 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo">&nbsp;&nbsp;Triplog</a>
+              <a href="/" class="left brand-logo">&nbsp;&nbsp;<img class="responsive-img" style="width:40px;" class="imglogo" src="{% static 'css/images/Logo.png' %}" alt="Logo"> Triplog &nbsp;&nbsp;</a>
             </li>
           </ul>
           <ul class="right">
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-            <li><a href="{% url 'index' %}">View All My Trips</a></li>
+            <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
             <li><a href="{% url 'trips_create' %}">Add a Trip</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
@@ -37,7 +40,7 @@
         </div>
       </nav>
     </header>
-    <main class="container">{% block content %} {% endblock %}</main>
+    <main class="">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
       <div class="right">
         All Rights Reserved, &copy; 2021 Triplog.io &nbsp;

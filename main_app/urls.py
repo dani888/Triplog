@@ -14,4 +14,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('upcomingtrips/<int:trip_id>/add_photo/', views.add_photo, name='add_photo'),
     path('upcomingtrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('pasttrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
 ]
