@@ -16,3 +16,31 @@ footer {
   width: 25px;
   height: 25px;
 }
+nav {
+  display: flex;
+  background-color: #303030;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 1030;
+}
+
+nav a:hover:not(.active) {
+  background-color: #1976d2;
+  color: white;
+}
+
+nav a {
+  color: white;
+  padding: 18px;
+  text-decoration: none;
+  float: left;
+}
+.page-footer {
+  padding-top: 20px;
+  color: #fff;
+  background-color: #303030;
+}
