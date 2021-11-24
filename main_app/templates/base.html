@@ -29,7 +29,7 @@
             <li><a href="{% url 'about' %}">About</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-            <li><a href="{% url 'index' %}">View All My Trips</a></li>
+            <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
             <li><a href="{% url 'trips_create' %}">Add a Trip</a></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
