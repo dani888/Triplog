@@ -16,3 +16,53 @@ footer {
   width: 25px;
   height: 25px;
 }
+nav {
+  display: flex;
+  background-color: #303030;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 1030;
+}
+
+nav a:hover:not(.active) {
+  background-color: #1976d2;
+  color: white;
+}
+
+nav a {
+  color: white;
+  padding: 18px;
+  text-decoration: none;
+  float: left;
+}
+
+@media only screen and (max-width: 600px) {
+  nav ul a {
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    padding: 0 5px;
+    cursor: pointer;
+  }
+  nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0;
+  }
+}
+
+.page-footer {
+  padding-top: 20px;
+  color: #fff;
+  background-color: #303030;
+}

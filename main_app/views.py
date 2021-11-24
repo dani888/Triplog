@@ -49,6 +49,7 @@ def pasttrips_detail(request, trip_id):
   comment_form = CommentForm()
   return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
 
+@login_required
 def add_photo(request, trip_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -95,6 +96,7 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
+
 
 def add_comment(request, trip_id):
   form = CommentForm(request.POST)
