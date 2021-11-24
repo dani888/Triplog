@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+
+<body class="body">
+
+  <div class="container">
+    <h1>Upcoming Trips</h1>
+
+
+    {% for trip in trips %}
+    <div class="card">
+      <a href="/publictrips/{{ trip.id }}">
+        <div class="card-content">
+          <span class="card-title">{{ trip.location }}</span>
+          <p>Trip Organizer: {{ trip.trip_organizer }}</p>
+          <p>Attendees: {{ trip.attending }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+{% endblock %}

@@ -15,4 +15,7 @@ urlpatterns = [
     path('upcomingtrips/<int:trip_id>/add_photo/', views.add_photo, name='add_photo'),
     path('upcomingtrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
     path('pasttrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('publictrips/<int:trip_id>/add_commentpublic/', views.add_commentpublic, name='add_commentpublic'),
+    path('publictrips/', views.publictrip_index, name='public_index'),
+    path('publictrips/<int:trip_id>/', views.publictrips_detail, name='public_detail'),
 ]
