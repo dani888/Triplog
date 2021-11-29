@@ -26,8 +26,7 @@ nav {
   display: block;
   position: fixed;
   top: 0;
-  z-index: 1030; 
-  
+  z-index: 1030;
 }
 
 nav a {
@@ -60,7 +59,6 @@ nav a {
   padding-left: 15px;
 }
 
-
 .hamburger-left-a:hover {
   background-color: #1976d2;
 }
@@ -76,12 +74,12 @@ nav ul a:hover {
 }
 
 .addeditform {
-  width: 50%;
+  width: 70%;
   justify-content: center;
-  margin-left: 25%;
+  margin-left: 15%;
 }
+
 .textBoxadd {
-  /* max-width: 100%; */
   max-height: 1500px;
   font-size: 17.5px;
   background-color: rgb(255, 255, 255, 0.9);
@@ -91,8 +89,26 @@ nav ul a:hover {
   margin-left: 10%;
   padding: 10px;
   border-radius: 10px;
-  /* margin: 25px 0px; */
 }
+@media only screen and (max-width: 600px) {
+  .addeditform {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .textBoxadd {
+    max-height: 1500px;
+    font-size: 10px;
+    background-color: rgb(255, 255, 255, 0.9);
+    text-align: center;
+    width: 90%;
+    height: 60%;
+    margin-left: 5%;
+    /* padding: 10px; */
+    border-radius: 0px;
+  }
+}
+
 .usernav {
   float: left;
   font-size: 17.5px;
