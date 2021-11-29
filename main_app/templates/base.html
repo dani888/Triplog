@@ -36,12 +36,12 @@
           </li>
         </ul>
         <ul class="right hide-on-med-and-down">
-          <li><a href="{% url 'about' %}">About</a></li>
+          <li class="nav-button"><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
-          <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
-          <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-          <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-          <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
+          <li class="nav-button"><a href="{% url 'public_index' %}">View Public Trips</a></li>
+          <li class="nav-button"><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+          <li class="nav-button"><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+          <li class="nav-button"><a href="{% url 'trips_create' %}">Add Trip</a></li>
           <li>
             <form class="searchback" method='POST' action="{% url 'search_trips' %}">
               {% csrf_token %}
@@ -49,10 +49,10 @@
               <!-- <button class="btn blue" type="submit">Search</button> -->
             </form>
           </li>
-          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          <li class="nav-button"><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li><a href="{% url 'login' %}">Log In</a></li>
+          <li class="nav-button"><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li class="nav-button"><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
         </ul>
       </div>
