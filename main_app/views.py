@@ -10,6 +10,7 @@ from .forms import CommentForm
 import uuid
 import boto3
 
+
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'catcollector-photo-uploadan'
 
@@ -24,11 +25,19 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+def search_trips(request):
+  if request.method == "POST":
+    searched = request.POST['searched']
+    trips = Trip.objects.filter(location__contains=searched).filter(user=request.user)
+    return render(request, 'trips/search_trips.html', {'searched': searched, 'trips': trips })
+
 @login_required
 def upcomingtrips_index(request):
+  userz = request.user
+  print(userz)
   today = date.today()
   trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
-  return render(request, 'trips/index.html', { 'trips': trips })
+  return render(request, 'trips/index.html', { 'trips': trips, 'user': userz })
 
 
 @login_required
@@ -38,16 +47,30 @@ def pasttrips_index(request):
   return render(request, 'trips/indexpast.html', { 'trips': trips })
 
 @login_required
+def publictrip_index(request):
+  trips = Trip.objects.filter(public='Y')
+  return render(request, 'trips/indexpublic.html', { 'trips': trips })
+
+@login_required
 def trips_detail(request, trip_id):
-  trip = Trip.objects.get(id=trip_id)
+  userz = request.user
+  print(userz)
+  trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form})
+  return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
 @login_required
 def pasttrips_detail(request, trip_id):
-  trip = Trip.objects.get(id=trip_id)
+  trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
+
+@login_required
+def publictrips_detail(request, trip_id):
+  trip = Trip.objects.get(id=trip_id)
+  comment_form = CommentForm()
+  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form})
+
 
 @login_required
 def add_photo(request, trip_id):
@@ -72,7 +95,7 @@ def add_photo(request, trip_id):
 
 class TripCreate(LoginRequiredMixin, CreateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
   def form_valid(self, form):
     # Assign the logged in user (self.request.user)
     form.instance.user = self.request.user  # form.instance is the cat
@@ -97,7 +120,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-
+@login_required
 def add_comment(request, trip_id):
   form = CommentForm(request.POST)
   if form.is_valid():
@@ -106,9 +129,18 @@ def add_comment(request, trip_id):
     new_comment.save()
   return redirect('detail', trip_id=trip_id)
 
+@login_required
+def add_commentpublic(request, trip_id):
+  form = CommentForm(request.POST)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.trip_id = trip_id
+    new_comment.save()
+  return redirect('public_detail', trip_id=trip_id)
+
 class TripUpdate(LoginRequiredMixin, UpdateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes']
+  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
 
 class TripDelete(LoginRequiredMixin, DeleteView):
   model = Trip

@@ -2,6 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 main {
@@ -25,12 +26,8 @@ nav {
   display: block;
   position: fixed;
   top: 0;
-  z-index: 1030;
-}
-
-nav a:hover:not(.active) {
-  background-color: #1976d2;
-  color: white;
+  z-index: 1030; 
+  
 }
 
 nav a {
@@ -40,25 +37,32 @@ nav a {
   float: left;
 }
 
+/* testing */
+
 @media only screen and (max-width: 600px) {
-  nav ul a {
-    -webkit-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-    font-size: 0.5rem;
-    font-weight: bold;
-    color: #fff;
-    display: block;
-    padding: 0 5px;
-    cursor: pointer;
-  }
   nav .brand-logo {
     position: absolute;
     color: #fff;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: bold;
     padding: 0;
+    padding-top: 5px;
   }
+}
+
+.sidenav-trigger {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+.hamburger-left-a:hover {
+  background-color: #1976d2;
+}
+
+nav ul a:hover {
+  background-color: rgb(0, 0, 0, 0);
 }
 
 .page-footer {
@@ -67,10 +71,60 @@ nav a {
   background-color: #303030;
 }
 
+.addeditform {
+  width: 50%;
+  justify-content: center;
+  margin-left: 25%;
+}
+.textBoxadd {
+  /* max-width: 100%; */
+  max-height: 1500px;
+  font-size: 17.5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  text-align: center;
+  width: 80%;
+  height: 50%;
+  margin-left: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  /* margin: 25px 0px; */
+}
+.usernav {
+  float: left;
+  font-size: 17.5px;
+}
 .card {
-  opacity: .9;
+  opacity: 0.9;
+}
+.back {
+  color: White;
+}
+.searchback {
+  width: 140px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 870px) {
+  .searchback {
+    display: none;
+  }
 }
 
+::placeholder {
+  color: white;
+}
+.d-flex {
+  color: white;
+}
+input.search {
+  text-indent: 20px;
+  transition: 0.3s;
+}
+input.search:focus {
+  background-image: none;
+  text-indent: 0px;
+}
 
 /* /////////////////////// HOME PAGE /////////////////////// */
 
@@ -99,18 +153,17 @@ nav a {
   background-repeat: no-repeat;
 }
 
-
 /* /////////////////////// ABOUT PAGE /////////////////////// */
 
 .textBox {
   /* max-width: 100%; */
   max-height: 1500px;
   font-size: 17.5px;
-  background-color: rgb(255, 255, 255, .9);
+  background-color: rgb(255, 255, 255, 0.9);
   text-align: center;
   width: 100%;
+  height: 100%;
   padding: 10px;
   border-radius: 10px;
   margin: 25px 0px;
-  
 }

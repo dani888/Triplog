@@ -2,20 +2,20 @@
 
 <body class="body">
   <div class="container">
+    <div class="textBoxadd">
     {% if object %}
     <h1>Edit Trip to <span class="teal-text">{{object.location}}</span></h1>
     {% else %}
     <h1>Add Trip</h1>
     {% endif %}
     <!-- Leaving the action empty makes the form post to the same url used to display it -->
-    <div class="textBox">
-      <form action="" method="post">
+      <form class="addeditform" action="" method="post">
         <!-- Django requires the following for security purposes -->
         {% csrf_token %}
-        <table>
+        <!-- <table> -->
           <!-- Render the inputs inside of <tr>s & <td>s -->
-          {{ form.as_table }}
-        </table>
+          {{ form.as_p}}
+        <!-- </table> -->
         <input style="float: left; margin: 10px 0px" type="submit" value="Submit!" class="btn blue" />
       </form>
       <br><br>
@@ -30,5 +30,7 @@
     setDefaultDate: true,
     autoClose: true
   });
+  var selectEl = document.getElementById('id_public');
+  M.FormSelect.init(selectEl);
 </script>
 {% endblock %}

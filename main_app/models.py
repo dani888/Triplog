@@ -1,8 +1,11 @@
 from django.db import models
 from django.urls import reverse
-
 from django.contrib.auth.models import User
 
+PUBLIC = (
+    ('N', 'No'),
+    ('Y', 'Yes')
+)
 
 class Trip(models.Model):
     trip_organizer = models.CharField(max_length=50)
@@ -12,6 +15,11 @@ class Trip(models.Model):
     date = models.DateField()
     plan = models.TextField(max_length=250)
     notes = models.TextField(max_length=250)
+    public = models.CharField(
+        max_length=1,
+        choices=PUBLIC,
+        default=PUBLIC[0][0]
+        )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
