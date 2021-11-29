@@ -28,7 +28,7 @@ def about(request):
 def search_trips(request):
   if request.method == "POST":
     searched = request.POST['searched']
-    trips = Trip.objects.filter(location__contains=searched).filter(user=request.user)
+    trips = Trip.objects.filter(location__icontains=searched).filter(user=request.user)
     return render(request, 'trips/search_trips.html', {'searched': searched, 'trips': trips })
 
 @login_required
