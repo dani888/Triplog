@@ -2,6 +2,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 main {
@@ -12,5 +13,177 @@ footer {
   padding-top: 0;
   text-align: right;
 }
+.imglogo {
+  width: 25px;
+  height: 25px;
+}
+nav {
+  display: flex;
+  background-color: #303030;
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  position: fixed;
+  top: 0;
+  z-index: 1030;
+}
 
+nav a {
+  color: white;
+  padding: 18px;
+  text-decoration: none;
+  float: left;
+}
 
+/* testing */
+
+@media only screen and (max-width: 600px) {
+  nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0;
+    padding-top: 5px;
+  }
+}
+
+.nav-button:hover {
+  background-color: #1976d2;
+}
+
+.sidenav-trigger {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.hamburger-left-a:hover {
+  background-color: #1976d2;
+}
+
+nav ul a:hover {
+  background-color: rgb(0, 0, 0, 0);
+}
+
+.page-footer {
+  padding-top: 20px;
+  color: #fff;
+  background-color: #303030;
+}
+
+.addeditform {
+  width: 70%;
+  justify-content: center;
+  margin-left: 15%;
+}
+
+.textBoxadd {
+  max-height: 1500px;
+  font-size: 17.5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  text-align: center;
+  width: 80%;
+  height: 50%;
+  margin-left: 10%;
+  padding: 10px;
+  border-radius: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .addeditform {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+  .textBoxadd {
+    max-height: 1500px;
+    font-size: 10px;
+    background-color: rgb(255, 255, 255, 0.9);
+    text-align: center;
+    width: 90%;
+    height: 60%;
+    margin-left: 5%;
+    /* padding: 10px; */
+    border-radius: 0px;
+  }
+}
+
+.usernav {
+  float: left;
+  font-size: 17.5px;
+}
+.card {
+  opacity: 0.9;
+}
+.back {
+  color: White;
+}
+.searchback {
+  width: 140px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 870px) {
+  .searchback {
+    display: none;
+  }
+}
+
+::placeholder {
+  color: white;
+}
+.d-flex {
+  color: white;
+}
+input.search {
+  text-indent: 20px;
+  transition: 0.3s;
+}
+input.search:focus {
+  background-image: none;
+  text-indent: 0px;
+}
+
+/* /////////////////////// HOME PAGE /////////////////////// */
+
+.home {
+  /* background-attachment: fixed; */
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: auto;
+  justify-items: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Balsamiq Sans", cursive;
+}
+
+/* .home-container {
+  width: 100%;
+} */
+
+.body {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* /////////////////////// ABOUT PAGE /////////////////////// */
+
+.textBox {
+  /* max-width: 100%; */
+  max-height: 1500px;
+  font-size: 17.5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 25px 0px;
+}
