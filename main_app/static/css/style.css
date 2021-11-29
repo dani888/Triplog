@@ -51,6 +51,10 @@ nav a {
   }
 }
 
+.nav-button:hover {
+  background-color: #1976d2;
+}
+
 .sidenav-trigger {
   padding-right: 15px;
   padding-left: 15px;
