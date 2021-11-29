@@ -1,3 +1,33 @@
-{% extends 'base.html' %} {% block content %}
-<h1>Home Page Triplog.io</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+
+<body class="body">
+    <div class="home">
+        <div class="container">
+            <h1>Home Page Triplog.io</h1>
+            <p>Organize Travel in Style</p>
+            <div class="carousel">
+                <a class="carousel-item" href="#one!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1583855282680-6dbdc69b0932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Italy</a>
+                <a class="carousel-item" href="#two!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1509216242873-7786f446f465?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Peru</a>
+                <a class="carousel-item" href="#three!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1605523746900-8aa30db1befd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80">Kyoto</a>
+                <a class="carousel-item" href="#four!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1624832040555-d9f92f7be672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Ghana</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Santorini</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems);
+        });
+    </script>
+
+</body>
+
 {% endblock %}

@@ -12,4 +12,12 @@ urlpatterns = [
     path('upcomingtrips/<int:pk>/update/', views.TripUpdate.as_view(), name='trips_update'),
     path('upcomingtrips/<int:pk>/delete/', views.TripDelete.as_view(), name='trips_delete'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('upcomingtrips/<int:trip_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('upcomingtrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('pasttrips/<int:trip_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('publictrips/<int:trip_id>/add_commentpublic/', views.add_commentpublic, name='add_commentpublic'),
+    path('publictrips/', views.publictrip_index, name='public_index'),
+    path('publictrips/<int:trip_id>/', views.publictrips_detail, name='public_detail'),
+    
+    path('search_trips/', views.search_trips, name='search_trips'),
 ]

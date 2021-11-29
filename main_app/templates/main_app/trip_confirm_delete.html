@@ -1,4 +1,6 @@
 {% extends 'base.html' %} {% block content %}
+
+<div class="container">
 <h1>Delete Trip</h1>
 
 <h4>
@@ -11,4 +13,5 @@
   <input type="submit" value="Yes - Delete!" class="btn red" />
   <a href="{% url 'detail' trip.id %}" class="btn blue">Cancel</a>
 </form>
+</div>
 {% endblock %}
