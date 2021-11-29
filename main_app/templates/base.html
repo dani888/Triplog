@@ -31,7 +31,12 @@
             <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
             <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
             <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-            <li><a href="{% url 'trips_create' %}">Add a Trip</a></li>
+            <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
+            <li><form class="searchback" method='POST' action="{% url 'search_trips' %}">
+              {% csrf_token %}
+              <input class="d-flex search" autocomplete="off" type="search" placeholder="Search Trips" name="searched">
+              <!-- <button class="btn blue" type="submit">Search</button> -->
+            </form></li>
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             {% else %}
             <li><a href="{% url 'signup' %}">Sign Up</a></li>

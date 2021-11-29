@@ -10,6 +10,7 @@ from .forms import CommentForm
 import uuid
 import boto3
 
+
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
 BUCKET = 'catcollector-photo-uploadan'
 
@@ -24,11 +25,19 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+def search_trips(request):
+  if request.method == "POST":
+    searched = request.POST['searched']
+    trips = Trip.objects.filter(location__contains=searched).filter(user=request.user)
+    return render(request, 'trips/search_trips.html', {'searched': searched, 'trips': trips })
+
 @login_required
 def upcomingtrips_index(request):
+  userz = request.user
+  print(userz)
   today = date.today()
   trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
-  return render(request, 'trips/index.html', { 'trips': trips })
+  return render(request, 'trips/index.html', { 'trips': trips, 'user': userz })
 
 
 @login_required
@@ -44,13 +53,15 @@ def publictrip_index(request):
 
 @login_required
 def trips_detail(request, trip_id):
-  trip = Trip.objects.get(id=trip_id)
+  userz = request.user
+  print(userz)
+  trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form})
+  return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
 @login_required
 def pasttrips_detail(request, trip_id):
-  trip = Trip.objects.get(id=trip_id)
+  trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
 
@@ -109,7 +120,7 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
-
+@login_required
 def add_comment(request, trip_id):
   form = CommentForm(request.POST)
   if form.is_valid():
@@ -118,6 +129,7 @@ def add_comment(request, trip_id):
     new_comment.save()
   return redirect('detail', trip_id=trip_id)
 
+@login_required
 def add_commentpublic(request, trip_id):
   form = CommentForm(request.POST)
   if form.is_valid():
