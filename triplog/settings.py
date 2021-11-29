@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'triplog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'triplog'
     }
 }
 
