@@ -30,11 +30,6 @@ nav {
   
 }
 
-nav a:hover:not(.active) {
-  background-color: #1976d2;
-  color: white;
-}
-
 nav a {
   color: white;
   padding: 18px;
@@ -43,38 +38,31 @@ nav a {
 }
 
 /* testing */
-.hamburger-left:hover:not(.active)  {
-  background-color: #1976d2;
-}
-
-.sidenav-trigger {
-  /* margin: 0; */
-  padding-right: 40px;
-  padding-left: 40px;
-  margin-left: -50px;
-}
-
-
 
 @media only screen and (max-width: 600px) {
-  nav ul a {
-    -webkit-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-    font-size: 0.5rem;
-    font-weight: bold;
-    color: #fff;
-    display: block;
-    padding: 0 5px;
-    cursor: pointer;
-  }
   nav .brand-logo {
     position: absolute;
     color: #fff;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: bold;
     padding: 0;
+    padding-top: 5px;
   }
+}
+
+.sidenav-trigger {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+.hamburger-left-a:hover {
+  background-color: #1976d2;
+}
+
+nav ul a:hover {
+  background-color: rgb(0, 0, 0, 0);
 }
 
 .page-footer {
