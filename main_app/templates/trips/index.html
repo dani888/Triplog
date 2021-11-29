@@ -3,9 +3,8 @@
 <body class="body">
 
   <div class="container">
-    <h1>Upcoming Trips</h1>
-
-
+    <h1>Upcoming Trips for {{ user }}</h1>
+    
     {% for trip in trips %}
     <div class="card">
       <a href="/upcomingtrips/{{ trip.id }}">

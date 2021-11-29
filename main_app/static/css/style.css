@@ -67,8 +67,59 @@ nav a {
   background-color: #303030;
 }
 
+.addeditform {
+  width: 50%;
+  justify-content: center;
+  margin-left: 25%;
+}
+.textBoxadd {
+  /* max-width: 100%; */
+  max-height: 1500px;
+  font-size: 17.5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  text-align: center;
+  width: 80%;
+  height: 50%;
+  margin-left: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  /* margin: 25px 0px; */
+}
+.usernav {
+  float: left;
+  font-size: 17.5px;
+}
 .card {
   opacity: 0.9;
+}
+.back {
+  color: White;
+}
+.searchback {
+  width: 140px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 870px) {
+  .searchback {
+    display: none;
+  }
+}
+
+::placeholder {
+  color: white;
+}
+.d-flex {
+  color: white;
+}
+input.search {
+  text-indent: 20px;
+  transition: 0.3s;
+}
+input.search:focus {
+  background-image: none;
+  text-indent: 0px;
 }
 
 /* /////////////////////// HOME PAGE /////////////////////// */

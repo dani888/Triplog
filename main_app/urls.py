@@ -18,4 +18,6 @@ urlpatterns = [
     path('publictrips/<int:trip_id>/add_commentpublic/', views.add_commentpublic, name='add_commentpublic'),
     path('publictrips/', views.publictrip_index, name='public_index'),
     path('publictrips/<int:trip_id>/', views.publictrips_detail, name='public_detail'),
+    
+    path('search_trips/', views.search_trips, name='search_trips'),
 ]
