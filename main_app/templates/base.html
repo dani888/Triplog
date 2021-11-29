@@ -1,77 +1,83 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Triplog.io</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Triplog.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('.sidenav');
       var instances = M.Sidenav.init(elems);
-      });
-    </script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <li class="hamburger-left">
-              <a href="/" class="brand-logo">&nbsp;&nbsp;<img class="responsive-img" style="width:40px;" class="imglogo" src="{% static 'css/images/Logo.png' %}" alt="Logo"> Triplog &nbsp;&nbsp;</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            </li>
-          </ul> 
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'about' %}">About</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
-            <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-            <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-            <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
-            <li><form class="searchback" method='POST' action="{% url 'search_trips' %}">
+    });
+  </script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li class="hamburger-left">
+            <a href="/" class="brand-logo">&nbsp;&nbsp;<img class="responsive-img" style="width:40px;" class="imglogo"
+                src="{% static 'css/images/Logo.png' %}" alt="Logo"> Triplog &nbsp;&nbsp;</a>
+          </li>
+          <li class="hamburger-left-a">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          </li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+          <li class="nav-button"><a href="{% url 'about' %}">About</a></li>
+          {% if user.is_authenticated %}
+          <li class="nav-button"><a href="{% url 'public_index' %}">View Public Trips</a></li>
+          <li class="nav-button"><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+          <li class="nav-button"><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+          <li class="nav-button"><a href="{% url 'trips_create' %}">Add Trip</a></li>
+          <li>
+            <form class="searchback" method='POST' action="{% url 'search_trips' %}">
               {% csrf_token %}
               <input class="d-flex search" autocomplete="off" type="search" placeholder="Search Trips" name="searched">
               <!-- <button class="btn blue" type="submit">Search</button> -->
-            </form></li>
-            <li><a href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
-          </ul>
-        </div>
-      </nav> 
+            </form>
+          </li>
+          <li class="nav-button"><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li class="nav-button"><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li class="nav-button"><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
 
-      <ul class="sidenav" id="mobile-demo" style="margin-top:56px;">
-        <li><a href="{% url 'about' %}">About</a></li>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
-        <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-        <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-        <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
-        {% comment %} <li><form class="searchback" method='POST' action="{% url 'search_trips' %}">
+    <ul class="sidenav" id="mobile-demo" style="margin-top:56px;">
+      <li><a href="{% url 'about' %}">About</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
+      <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+      <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+      <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
+      {% comment %} <li>
+        <form class="searchback" method='POST' action="{% url 'search_trips' %}">
           {% csrf_token %}
           <input class="d-flex search" autocomplete="off" type="search" placeholder="Search Trips" name="searched">
-          
-        </form></li> {% endcomment %}
-        <li><a href="{% url 'logout' %}">Log Out</a></li>
-        {% else %}
-        <li><a href="{% url 'signup' %}">Sign Up</a></li>
-        <li><a href="{% url 'login' %}">Log In</a></li>
-        {% endif %}
-      </ul>
+
+        </form>
+      </li> {% endcomment %}
+      <li><a href="{% url 'logout' %}">Log Out</a></li>
+      {% else %}
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      {% endif %}
+    </ul>
 
 
 
@@ -79,12 +85,13 @@
 
 
 
-    </header>
-    <main class="">{% block content %} {% endblock %}</main>
-    <footer class="page-footer">
-      <div class="right">
-        All Rights Reserved, &copy; 2021 Triplog.io &nbsp;
-      </div>
-    </footer>
-  </body>
+  </header>
+  <main class="">{% block content %} {% endblock %}</main>
+  <footer class="page-footer">
+    <div class="right">
+      All Rights Reserved, &copy; 2021 Triplog.io &nbsp;
+    </div>
+  </footer>
+</body>
+
 </html>
