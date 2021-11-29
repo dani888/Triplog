@@ -25,6 +25,7 @@ def home(request):
 def about(request):
   return render(request, 'about.html')
 
+@login_required
 def search_trips(request):
   if request.method == "POST":
     searched = request.POST['searched']
@@ -54,7 +55,6 @@ def publictrip_index(request):
 @login_required
 def trips_detail(request, trip_id):
   userz = request.user
-  print(userz)
   trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/detail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
