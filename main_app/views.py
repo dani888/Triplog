@@ -35,7 +35,6 @@ def search_trips(request):
 @login_required
 def upcomingtrips_index(request):
   userz = request.user
-  print(userz)
   today = date.today()
   trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
   return render(request, 'trips/index.html', { 'trips': trips, 'user': userz })
