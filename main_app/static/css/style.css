@@ -50,6 +50,12 @@ nav a {
   }
 }
 
+@media only screen and (max-width: 1050px) {
+  .nav-button a {
+    font-size: 13px;
+  }
+}
+
 .nav-button:hover {
   background-color: #1976d2;
 }
