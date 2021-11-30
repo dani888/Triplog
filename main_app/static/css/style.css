@@ -2,7 +2,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 75px;
+  font-family: "Balsamiq Sans", cursive;
 }
 
 main {
@@ -47,6 +48,12 @@ nav a {
     font-weight: bold;
     padding: 0;
     padding-top: 5px;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .nav-button a {
+    font-size: 13px;
   }
 }
 
@@ -124,6 +131,7 @@ nav ul a:hover {
   margin-left: 10px;
   margin-right: 10px;
   box-sizing: border-box;
+  font-family: "Balsamiq Sans", cursive;
 }
 @media only screen and (max-width: 870px) {
   .searchback {
