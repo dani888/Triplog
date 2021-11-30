@@ -35,7 +35,6 @@ def search_trips(request):
 @login_required
 def upcomingtrips_index(request):
   userz = request.user
-  print(userz)
   today = date.today()
   trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
   return render(request, 'trips/index.html', { 'trips': trips, 'user': userz })
@@ -61,15 +60,17 @@ def trips_detail(request, trip_id):
 
 @login_required
 def pasttrips_detail(request, trip_id):
+  userz = request.user
   trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
+  return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
 @login_required
 def publictrips_detail(request, trip_id):
+  userz = request.user
   trip = Trip.objects.get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form})
+  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
 
 @login_required
@@ -122,19 +123,23 @@ def signup(request):
 
 @login_required
 def add_comment(request, trip_id):
+  userz = request.user.id
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.trip_id = trip_id
+    new_comment.user_id = userz
     new_comment.save()
   return redirect('detail', trip_id=trip_id)
 
 @login_required
 def add_commentpublic(request, trip_id):
+  userz = request.user.id
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.trip_id = trip_id
+    new_comment.user_id = userz
     new_comment.save()
   return redirect('public_detail', trip_id=trip_id)
 
