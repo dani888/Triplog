@@ -1,15 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<body class="body">
+<div class="textBoxadd">
+<body class="body2">
   <div class="container">
-    <div class="textBoxadd">
     {% if object %}
     <h1>Edit Trip to <span class="teal-text">{{object.location}}</span></h1>
     {% else %}
-    <h1>Add Trip</h1>
+    <h1><u>Add Trip</u></h1>
     {% endif %}
+    <div class="row">
     <!-- Leaving the action empty makes the form post to the same url used to display it -->
-      <form class="addeditform" action="" method="post">
+      <form class="col s12" action="" method="post">
         <!-- Django requires the following for security purposes -->
         {% csrf_token %}
         <!-- <table> -->
@@ -18,6 +19,7 @@
         <!-- </table> -->
         <input style="float: left; margin: 10px 0px" type="submit" value="Submit!" class="btn blue" />
       </form>
+    </div>
       <br><br><br>
     </div>
   </div>
