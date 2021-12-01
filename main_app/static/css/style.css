@@ -1,23 +1,36 @@
 body {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
-  margin-top: 75px;
+  margin-top: 100px;
   font-family: "Balsamiq Sans", cursive;
 }
 
 main {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url("https://images.unsplash.com/photo-1437846972679-9e6e537be46e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
   flex: 1 0 auto;
+  margin-top: 50px;
 }
 
 footer {
   padding-top: 0;
   text-align: right;
 }
+
+.form-h1 {
+  text-align: center;
+}
+
 .imglogo {
   width: 25px;
   height: 25px;
 }
+
 nav {
   display: flex;
   background-color: #303030;
@@ -55,6 +68,11 @@ nav a {
   .nav-button a {
     font-size: 13px;
   }
+}
+
+
+ul#mobile-demo.sidenav {
+  width: 60%;
 }
 
 .nav-button:hover {
@@ -233,6 +251,16 @@ input.search:focus {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.body5 {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1576502202167-791eca35a78d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1781&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 /* /////////////////////// ABOUT PAGE /////////////////////// */
 
 .textBox {
@@ -246,4 +274,11 @@ input.search:focus {
   padding: 10px;
   border-radius: 10px;
   margin: 25px 0px;
+}
+
+
+
+html, body {
+  margin: 0;
+  height: 100%;
 }
