@@ -36,12 +36,13 @@
           </li>
         </ul>
         <ul class="right hide-on-med-and-down">
-          <li class="nav-button"><a href="{% url 'about' %}">About</a></li>
+          {% with url_name=request.resolver_match.url_name %}
+          <li class="nav-button" {% if url_name == 'about' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
-          <li class="nav-button"><a href="{% url 'public_index' %}">View Public Trips</a></li>
-          <li class="nav-button"><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-          <li class="nav-button"><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-          <li class="nav-button"><a href="{% url 'trips_create' %}">Add Trip</a></li>
+          <li class="nav-button" {% if url_name == 'public_index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
+          <li class="nav-button" {% if url_name == 'indexpast' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+          <li class="nav-button" {% if url_name == 'index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+          <li class="nav-button" {% if url_name == 'trips_create' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'trips_create' %}">Add Trip</a></li>
           <li>
             <form class="searchback" method='POST' action="{% url 'search_trips' %}">
               {% csrf_token %}
@@ -51,20 +52,22 @@
           </li>
           <li class="nav-button"><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
-          <li class="nav-button"><a href="{% url 'signup' %}">Sign Up</a></li>
-          <li class="nav-button"><a href="{% url 'login' %}">Log In</a></li>
+          <li class="nav-button" {% if url_name == 'signup' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li class="nav-button" {% if url_name == 'login' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'login' %}">Log In</a></li>
           {% endif %}
+          {% endwith %}
         </ul>
       </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo" style="margin-top:56px;">
-      <li><a href="{% url 'about' %}">About</a></li>
+      {% with url_name=request.resolver_match.url_name %}
+      <li {% if url_name == 'about' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
-      <li><a href="{% url 'public_index' %}">View Public Trips</a></li>
-      <li><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-      <li><a href="{% url 'index' %}">View Upcoming Trips</a></li>
-      <li><a href="{% url 'trips_create' %}">Add Trip</a></li>
+      <li {% if url_name == 'public_index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
+      <li {% if url_name == 'indexpast' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+      <li {% if url_name == 'index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+      <li {% if url_name == 'trips_create' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'trips_create' %}">Add Trip</a></li>
       {% comment %} <li>
         <form class="searchback" method='POST' action="{% url 'search_trips' %}">
           {% csrf_token %}
@@ -74,16 +77,11 @@
       </li> {% endcomment %}
       <li><a href="{% url 'logout' %}">Log Out</a></li>
       {% else %}
-      <li><a href="{% url 'signup' %}">Sign Up</a></li>
-      <li><a href="{% url 'login' %}">Log In</a></li>
+      <li {% if url_name == 'signup' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'signup' %}">Sign Up</a></li>
+      <li {% if url_name == 'login' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'login' %}">Log In</a></li>
       {% endif %}
+      {% endwith %}
     </ul>
-
-
-
-
-
-
 
   </header>
   <main class="">{% block content %} {% endblock %}</main>
