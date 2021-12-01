@@ -1,0 +1,6 @@
+Pipfile
+Pipfile.lock
+Procfile
+requirements.txt
+__pycache__
+settings.py

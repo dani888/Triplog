@@ -4,10 +4,15 @@
 <body class="body">
     <div class="home">
         <div class="container">
-            <h1>Home Page Triplog.io</h1>
-            <p>Organize Travel in Style</p>
+            <h1>Triplog.io</h1>
+            {% if user.username %}
+                <p>Welcome Back {{ user }}</p>
+            {% else %}
+                <p>Organize Travel in Style</p>
+            {% endif %}
+            <hr />
             <div class="carousel">
-                <a class="carousel-item" href="#one!"><img style="max-height:250px;"
+                <a class="carousel-item" href="upcomingtrips/create/"><img style="max-height:250px;"
                         src="https://images.unsplash.com/photo-1583855282680-6dbdc69b0932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Italy</a>
                 <a class="carousel-item" href="#two!"><img style="max-height:250px;"
                         src="https://images.unsplash.com/photo-1509216242873-7786f446f465?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Peru</a>
@@ -17,8 +22,23 @@
                         src="https://images.unsplash.com/photo-1624832040555-d9f92f7be672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Ghana</a>
                 <a class="carousel-item" href="#five!"><img style="max-height:250px;"
                         src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Santorini</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1603243840535-411d0ff891e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Hawaii</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1562614174-c82de799351a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">France</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1558268657-8dde43b2fecc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">England</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1630135199928-55a43e87350d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80">Korea</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1494949360228-4e9bde560065?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Thailand</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1550105128-0feb264c86ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">China</a>
+                <a class="carousel-item" href="#five!"><img style="max-height:250px;"
+                        src="https://images.unsplash.com/photo-1583825637186-77dff2a3d112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Germany</a>
             </div>
         </div>
+        <br>
     </div>
     
     <script>
