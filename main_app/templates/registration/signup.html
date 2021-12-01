@@ -2,14 +2,22 @@
 
 <body class="body4">
   <div class="container">
-    <h1 class="signlogin">Sign Up</h1>
-    {% if error_message %}
-    <p class="red-text">{{ error_message }}</p>
-    {% endif %}
-    <form method="post" action="{% url 'signup' %}">
-      {% csrf_token %} {{ form.as_p }}
-      <input type="submit" class="btn blue" value="signup" />
-    </form>
+    <br>
+    <br>
+    <div class="card">
+      <div class="card-content">
+        <h1 class="signlogin">Sign Up</h1>
+        {% if error_message %}
+        <p class="red-text">{{ error_message }}</p>
+        {% endif %}
+        <form method="post" action="{% url 'signup' %}">
+          {% csrf_token %} {{ form.as_p }}
+          <input type="submit" class="btn blue" value="signup" />
+        </form>
+        <br>
+        <br>
+      </div>
+    </div>
   </div>
   <br>
 </body>

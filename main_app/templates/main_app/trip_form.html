@@ -1,26 +1,28 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="textBoxadd">
 <body class="body2">
   <div class="container">
-    {% if object %}
-    <h1>Edit Trip to <span class="teal-text">{{object.location}}</span></h1>
-    {% else %}
-    <h1><u>Add Trip</u></h1>
-    {% endif %}
-    <div class="row">
-    <!-- Leaving the action empty makes the form post to the same url used to display it -->
-      <form class="col s12" action="" method="post">
-        <!-- Django requires the following for security purposes -->
-        {% csrf_token %}
-        <!-- <table> -->
-          <!-- Render the inputs inside of <tr>s & <td>s -->
-          {{ form.as_p}}
-        <!-- </table> -->
-        <input style="float: left; margin: 10px 0px" type="submit" value="Submit!" class="btn blue" />
-      </form>
-    </div>
-      <br><br><br>
+    <div class="card">
+      <div class="card-content" style="margin: 50px 0px;">
+        <div class="row">
+          <!-- Leaving the action empty makes the form post to the same url used to display it -->
+          <form class="col s10 push-s1" action="" method="post">
+            {% if object %}
+              <h1>Edit Trip to <span class="teal-text">{{object.location}}</span></h1>
+            {% else %}
+            <h1><u>Add Trip</u></h1>
+            {% endif %}
+            <!-- Django requires the following for security purposes -->
+            {% csrf_token %}
+            <!-- <table> -->
+            <!-- Render the inputs inside of <tr>s & <td>s -->
+            {{ form.as_p}}
+            <!-- </table> -->
+            <input style="float: left;" type="submit" value="Submit!" class="btn blue" />
+          </form>
+        </div>
+        <br><br><br>
+      </div>
     </div>
   </div>
 </body>
