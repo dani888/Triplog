@@ -20,10 +20,15 @@ from django.http import HttpResponse
 
 # Define the home view
 def home(request):
-  return render(request, 'home.html')
+  userz = request.user
+  print(userz)
+  return render(request, 'home.html', {'user': userz})
 
 def about(request):
   return render(request, 'about.html')
+
+def handler404(request):
+    return render(request, '404.html', status='404')
 
 @login_required
 def search_trips(request):
@@ -68,7 +73,7 @@ def pasttrips_detail(request, trip_id):
 @login_required
 def publictrips_detail(request, trip_id):
   userz = request.user
-  trip = Trip.objects.get(id=trip_id)
+  trip = Trip.objects.filter(public='Y').get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
@@ -114,7 +119,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('index')
+      return redirect('')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
