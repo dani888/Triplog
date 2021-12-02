@@ -21,7 +21,6 @@ from django.http import HttpResponse
 # Define the home view
 def home(request):
   userz = request.user
-  print(userz)
   return render(request, 'home.html', {'user': userz})
 
 def about(request):
@@ -101,10 +100,12 @@ def add_photo(request, trip_id):
 
 class TripCreate(LoginRequiredMixin, CreateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
+  fields = ['trip_organizer','attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
   def form_valid(self, form):
+    print(form)
     # Assign the logged in user (self.request.user)
     form.instance.user = self.request.user  # form.instance is the cat
+    # print(form.instance.user)
     # Let the CreateView do its job as usual
     return super().form_valid(form)
 
@@ -150,7 +151,7 @@ def add_commentpublic(request, trip_id):
 
 class TripUpdate(LoginRequiredMixin, UpdateView):
   model = Trip
-  fields = ['trip_organizer', 'attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
+  fields = ['trip_organizer','attending', 'location', 'budget', 'date', 'plan', 'notes', 'public']
 
 class TripDelete(LoginRequiredMixin, DeleteView):
   model = Trip
