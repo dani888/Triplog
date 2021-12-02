@@ -28,7 +28,7 @@ def about(request):
   return render(request, 'about.html')
 
 def handler404(request):
-    return render(request, '404.html', status='404')
+    return render(request, '404.html', status=500)
 
 @login_required
 def search_trips(request):
