@@ -28,7 +28,7 @@ def about(request):
   return render(request, 'about.html')
 
 def handler404(request):
-    return render(request, '404.html', status='404')
+    return render(request, '404.html', status=404)
 
 @login_required
 def search_trips(request):
@@ -69,7 +69,7 @@ def pasttrips_detail(request, trip_id):
   trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
   return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
-
+    
 @login_required
 def publictrips_detail(request, trip_id):
   userz = request.user
@@ -119,7 +119,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('')
+      return redirect('home')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
