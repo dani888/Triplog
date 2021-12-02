@@ -38,9 +38,15 @@ Welcome to Triplog. This is an experimental application created to be able to lo
 - Trip Detail<br>
   <img src="./main_app/static/css/images/detail.png" width="500">
 
-## Getting Started
+## Pitch Deck
 
-[Click here](https://triplogapp.herokuapp.com/) to see the deployed Project.
+[Click here](https://docs.google.com/presentation/d/1bWYWVYajNoHXlFWXz6AX0giLQI4TCZtlB8GrG6gjIDA/edit#slide=id.p/) to see the Pitch Deck.
+
+## Trello Board
+
+[Click here](https://trello.com/b/5F9zikrK/traveler-app/) to see the Trello Board.
+
+
 
 ## Future Enhancements
 
