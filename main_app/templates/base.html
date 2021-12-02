@@ -39,9 +39,9 @@
           {% with url_name=request.resolver_match.url_name %}
           <li class="nav-button" {% if url_name == 'about' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'about' %}">About</a></li>
           {% if user.is_authenticated %}
-          <li class="nav-button" {% if url_name == 'public_index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
-          <li class="nav-button" {% if url_name == 'indexpast' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-          <li class="nav-button" {% if url_name == 'index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+          <li class="nav-button" {% if url_name == 'public_index' or url_name == 'public_detail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
+          <li class="nav-button" {% if url_name == 'indexpast' or url_name == 'pastdetail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+          <li class="nav-button" {% if url_name == 'index' or url_name == 'detail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
           <li class="nav-button" {% if url_name == 'trips_create' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'trips_create' %}">Add Trip</a></li>
           <li>
             <form class="searchback" method='POST' action="{% url 'search_trips' %}">
@@ -64,9 +64,9 @@
       {% with url_name=request.resolver_match.url_name %}
       <li {% if url_name == 'about' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'about' %}">About</a></li>
       {% if user.is_authenticated %}
-      <li {% if url_name == 'public_index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
-      <li {% if url_name == 'indexpast' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
-      <li {% if url_name == 'index' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
+      <li {% if url_name == 'public_index' or url_name == 'public_detail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'public_index' %}">View Public Trips</a></li>
+      <li {% if url_name == 'indexpast' or url_name == 'pastdetail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'indexpast' %}">View Past Trips</a></li>
+      <li {% if url_name == 'index' or url_name == 'detail' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'index' %}">View Upcoming Trips</a></li>
       <li {% if url_name == 'trips_create' %} class="active" style="background-color: #1976d2;" {% endif %}><a href="{% url 'trips_create' %}">Add Trip</a></li>
       {% comment %} <li>
         <form class="searchback" method='POST' action="{% url 'search_trips' %}">
