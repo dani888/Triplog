@@ -20,10 +20,15 @@ from django.http import HttpResponse
 
 # Define the home view
 def home(request):
-  return render(request, 'home.html')
+  userz = request.user
+  print(userz)
+  return render(request, 'home.html', {'user': userz})
 
 def about(request):
   return render(request, 'about.html')
+
+def handler404(request):
+    return render(request, '404.html', status=404)
 
 @login_required
 def search_trips(request):
@@ -35,7 +40,6 @@ def search_trips(request):
 @login_required
 def upcomingtrips_index(request):
   userz = request.user
-  print(userz)
   today = date.today()
   trips = Trip.objects.filter(user=request.user).filter(date__gte=today)
   return render(request, 'trips/index.html', { 'trips': trips, 'user': userz })
@@ -61,15 +65,17 @@ def trips_detail(request, trip_id):
 
 @login_required
 def pasttrips_detail(request, trip_id):
+  userz = request.user
   trip = Trip.objects.filter(user=request.user).get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form})
-
+  return render(request, 'trips/pastdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
+    
 @login_required
 def publictrips_detail(request, trip_id):
-  trip = Trip.objects.get(id=trip_id)
+  userz = request.user
+  trip = Trip.objects.filter(public='Y').get(id=trip_id)
   comment_form = CommentForm()
-  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form})
+  return render(request, 'trips/publicdetail.html', { 'trip': trip, 'comment_form': comment_form, 'user': userz})
 
 
 @login_required
@@ -113,7 +119,7 @@ def signup(request):
       user = form.save()
       # This is how we log a user in via code
       login(request, user)
-      return redirect('index')
+      return redirect('home')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
@@ -122,19 +128,23 @@ def signup(request):
 
 @login_required
 def add_comment(request, trip_id):
+  userz = request.user.id
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.trip_id = trip_id
+    new_comment.user_id = userz
     new_comment.save()
   return redirect('detail', trip_id=trip_id)
 
 @login_required
 def add_commentpublic(request, trip_id):
+  userz = request.user.id
   form = CommentForm(request.POST)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.trip_id = trip_id
+    new_comment.user_id = userz
     new_comment.save()
   return redirect('public_detail', trip_id=trip_id)
 

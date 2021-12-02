@@ -4,10 +4,15 @@
 <body class="body">
     <div class="home">
         <div class="container">
-            <h1>Home Page Triplog.io</h1>
-            <p>Organize Travel in Style</p>
+            <h1>Triplog.io</h1>
+            {% if user.username %}
+                <p>Welcome Back {{ user }}</p>
+            {% else %}
+                <p>Organize Travel in Style</p>
+            {% endif %}
+            <hr />
             <div class="carousel">
-                <a class="carousel-item" href="#one!"><img style="max-height:250px;"
+                <a class="carousel-item" href="upcomingtrips/create/"><img style="max-height:250px;"
                         src="https://images.unsplash.com/photo-1583855282680-6dbdc69b0932?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Italy</a>
                 <a class="carousel-item" href="#two!"><img style="max-height:250px;"
                         src="https://images.unsplash.com/photo-1509216242873-7786f446f465?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80">Peru</a>
@@ -33,6 +38,7 @@
                         src="https://images.unsplash.com/photo-1583825637186-77dff2a3d112?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80">Germany</a>
             </div>
         </div>
+        <br>
     </div>
     
     <script>
