@@ -15,9 +15,27 @@
             <!-- Django requires the following for security purposes -->
             {% csrf_token %}
             <!-- <table> -->
-            <!-- Render the inputs inside of <tr>s & <td>s -->
-            <!-- <input type="text" name="trip_organizer" value="{{ user.get_username }}"> -->
-            {{ form.as_p}}
+              <label for="id_trip_organizer">Trip organizer:</label>
+              <input type="text" name="trip_organizer" value="{{ user.username }}" required id="id_trip_organizer">
+
+              <label for="id_attending">Attending:</label>
+              <input type="text" name="attending" value="{{ trip.attending }}" maxlength="50" required id="id_attending">
+              <label for="id_location">Location:</label>
+              <input type="text" name="location" value="{{ trip.location }}" maxlength="50" required id="id_location">
+              <label for="id_budget">Budget:</label>
+              <input type="number" name="budget" value="{{ trip.budget }}" required id="id_budget">
+              <label for="id_date">Date:</label>
+              <input type="text" name="date" value="{{ object.date }}" required id="id_date" >
+              <label for="id_plan">Plan:</label>
+              <textarea name="plan" cols="40" rows="10" maxlength="250" required id="id_plan">{{ trip.plan }}</textarea>
+              <label for="id_notes">Notes:</label>
+              <textarea name="notes" cols="40" rows="10" maxlength="250" required id="id_notes">{{ trip.notes }}</textarea>
+              <label for="id_public">Public:</label>
+              <select name="public" value="{{ trip.public }}" id="id_public">
+                <option value="N" {% if trip.public == 'N' %} selected {% endif %}>No</option>
+                <option value="Y" {% if trip.public == 'Y' %} selected {% endif %}>Yes</option>
+              </select>
+            <!-- {{ form.as_p}} -->
             <!-- </table> -->
             <input style="float: left;" type="submit" value="Submit!" class="btn blue" />
           </form>
@@ -31,7 +49,7 @@
   var dateEl = document.getElementById('id_date');
   M.Datepicker.init(dateEl, {
     format: 'yyyy-mm-dd',
-    defaultDate: new Date(),
+    defaultDate: dateEl.value !== '' ? new Date(dateEl.value) : new Date(),
     setDefaultDate: true,
     autoClose: true
   });
